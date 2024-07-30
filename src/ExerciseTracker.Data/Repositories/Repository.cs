@@ -30,7 +30,7 @@ public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     public async Task<int> DeleteAsync(TEntity entity)
     {
         _dbSet.Remove(entity);
-        await _dbContext.SaveChangesAsync();
+        return await _dbContext.SaveChangesAsync();
     }
 
     public IQueryable<TEntity> Get()
@@ -46,6 +46,6 @@ public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     public async Task<int> UpdateAsync(TEntity entity)
     {
         _dbContext.Entry(entity).State = EntityState.Modified;
-        await _dbContext.SaveChangesAsync();
+        return await _dbContext.SaveChangesAsync();
     }
 }
