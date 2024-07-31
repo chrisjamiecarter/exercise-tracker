@@ -7,7 +7,7 @@
 
 Welcome to the Exercise Tracker App!
 
-This is a .NET project designed to demostrate the repository pattern solution for data persistence.
+This is a .NET project designed to demonstrate the repository pattern solution for data persistence.
 
 ## Requirements
 
