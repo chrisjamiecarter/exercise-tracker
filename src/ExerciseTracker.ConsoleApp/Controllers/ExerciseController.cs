@@ -4,7 +4,7 @@ using ExerciseTracker.Services;
 
 namespace ExerciseTracker.ConsoleApp.Controllers;
 
-internal class ExerciseController
+internal class ExerciseController : IExerciseController
 {
     private readonly IExerciseService _exerciseService;
     private readonly IExerciseTypeService _exerciseTypeService;
@@ -17,10 +17,6 @@ internal class ExerciseController
 
     public async Task<bool> CreateAsync(CreateExerciseRequest request)
     {
-        // DateTime.Now.AddHours(-2);
-        // DateTime.Now;
-        // $"Added by ExerciseController @ '{DateTime.Now}'",
-
         var exercise = new Exercise
         {
             DateStart = request.DateStart,
@@ -33,33 +29,37 @@ internal class ExerciseController
         return await _exerciseService.CreateAsync(exercise);
     }
 
-    public async Task<bool> DeleteExerciseAsync(int id)
+    public async Task<bool> DeleteAsync(int id)
     {
         return await _exerciseService.DeleteAsync(id);
     }
 
-    public async Task<Exercise?> ReturnExerciseAsync(int id)
+    public async Task<ExerciseDto?> ReturnAsync(int id)
     {
-        return await _exerciseService.ReturnAsync(id);
+        var entity = await _exerciseService.ReturnAsync(id);
+        return entity is null ? null : ExerciseDto.MapFrom(entity);
     }
 
-    public async Task<IReadOnlyList<Exercise>> ReturnExercisesAsync()
+    public async Task<IReadOnlyList<ExerciseDto>> ReturnAsync()
     {
-        return await _exerciseService.ReturnAsync();
+        var entities = await _exerciseService.ReturnAsync();
+        return entities.Select(ExerciseDto.MapFrom).ToList();
     }
 
     public async Task<bool> UpdateAsync(UpdateExerciseRequest request)
     {
-        var exercise = new Exercise
+        var exercise = await _exerciseService.ReturnAsync(request.Id);
+        if (exercise is null)
         {
-            Id = request.Id,
-            DateStart = request.DateStart,
-            DateEnd = request.DateEnd,
-            Duration = request.DateEnd - request.DateStart,
-            Comments = request.Comments,
-            ExerciseType = request.ExerciseType,
-        };
+            return false;
+        }
 
+        exercise.DateStart = request.DateStart;
+        exercise.DateEnd = request.DateEnd;
+        exercise.Duration = request.DateEnd - request.DateStart;
+        exercise.Comments = request.Comments;
+        exercise.ExerciseType = request.ExerciseType;
+        
         return await _exerciseService.UpdateAsync(exercise);
     }
 }

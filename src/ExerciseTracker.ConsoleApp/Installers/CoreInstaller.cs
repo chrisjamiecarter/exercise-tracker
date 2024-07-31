@@ -6,9 +6,12 @@ namespace ExerciseTracker.ConsoleApp.Installers;
 
 public class CoreInstaller : IInstaller
 {
-    public void InstallServices(HostApplicationBuilder builder)
+    public void InstallServices(IHostBuilder builder)
     {
-        builder.Services.AddTransient<IExerciseService, ExerciseService>();
-        builder.Services.AddTransient<IExerciseTypeService, ExerciseTypeService>();
+        builder.ConfigureServices(services =>
+        {
+            services.AddScoped<IExerciseService, ExerciseService>();
+            services.AddScoped<IExerciseTypeService, ExerciseTypeService>();
+        });
     }
 }

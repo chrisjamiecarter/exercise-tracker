@@ -4,7 +4,7 @@ namespace ExerciseTracker.ConsoleApp.Installers;
 
 public static class InstallerExtensions
 {
-    public static void InstallServicesInAssembly(this HostApplicationBuilder builder)
+    public static void InstallServicesInAssembly(this IHostBuilder builder)
     {
         var installers = typeof(Program).Assembly.ExportedTypes.
             Where(x => typeof(IInstaller).IsAssignableFrom(x) && !x.IsInterface && !x.IsAbstract).

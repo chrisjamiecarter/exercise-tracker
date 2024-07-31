@@ -3,7 +3,7 @@ using ExerciseTracker.Data.Entities;
 using ExerciseTracker.Services;
 
 namespace ExerciseTracker.ConsoleApp.Controllers;
-internal class ExerciseTypeController
+internal class ExerciseTypeController : IExerciseTypeController
 {
     private readonly IExerciseService _exerciseService;
     private readonly IExerciseTypeService _exerciseTypeService;

@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ExerciseTracker.Data.Migrations
 {
-    [DbContext(typeof(ExerciseTrackerDbContext))]
-    [Migration("20240730165923_InitialCreate")]
+    [DbContext(typeof(DatabaseContext))]
+    [Migration("20240731103110_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -71,6 +71,18 @@ namespace ExerciseTracker.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("ExerciseType");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Cardio"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Weights"
+                        });
                 });
 
             modelBuilder.Entity("ExerciseTracker.Data.Entities.Exercise", b =>

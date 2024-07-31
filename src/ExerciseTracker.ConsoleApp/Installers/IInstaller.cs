@@ -4,5 +4,5 @@ namespace ExerciseTracker.ConsoleApp.Installers;
 
 public interface IInstaller
 {
-    void InstallServices(HostApplicationBuilder builder);
+    void InstallServices(IHostBuilder builder);
 }

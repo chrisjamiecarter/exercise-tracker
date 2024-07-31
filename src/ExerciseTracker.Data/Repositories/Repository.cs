@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using ExerciseTracker.Data.Contexts;
+using Microsoft.EntityFrameworkCore;
 
 
 namespace ExerciseTracker.Data.Repositories;
@@ -13,7 +14,7 @@ public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     #endregion
     #region Constructors
     
-    public Repository(DbContext dbContext)
+    public Repository(DatabaseContext dbContext)
     {
         _dbContext = dbContext;
         _dbSet = _dbContext.Set<TEntity>();
