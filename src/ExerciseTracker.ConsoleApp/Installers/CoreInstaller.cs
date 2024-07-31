@@ -5,8 +5,13 @@ using Microsoft.Extensions.Hosting;
 
 namespace ExerciseTracker.ConsoleApp.Installers;
 
+/// <summary>
+/// Register the services required by the core library to the DI container.
+/// </summary>
 public class CoreInstaller : IInstaller
 {
+    #region Methods
+
     public void InstallServices(IHostBuilder builder)
     {
         builder.ConfigureServices((hostContext, services) =>
@@ -17,4 +22,6 @@ public class CoreInstaller : IInstaller
             services.AddScoped<ISeederService, SeederService>();
         });
     }
+
+    #endregion
 }

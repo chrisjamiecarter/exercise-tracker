@@ -1,6 +1,7 @@
 ﻿using ExerciseTracker.Data.Entities;
 
 namespace ExerciseTracker.Services;
+
 public interface IExerciseTypeService
 {
     Task<bool> CreateAsync(ExerciseType exerciseType);

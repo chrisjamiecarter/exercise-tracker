@@ -2,6 +2,7 @@
 using ExerciseTracker.Data.Entities;
 
 namespace ExerciseTracker.ConsoleApp.Controllers;
+
 internal interface IExerciseTypeController
 {
     Task<bool> CreateAsync(CreateExerciseTypeRequest request);

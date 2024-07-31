@@ -1,5 +1,4 @@
 ﻿using ExerciseTracker.ConsoleApp.Models;
-using ExerciseTracker.Data.Entities;
 using Spectre.Console;
 
 namespace ExerciseTracker.ConsoleApp.Engines;

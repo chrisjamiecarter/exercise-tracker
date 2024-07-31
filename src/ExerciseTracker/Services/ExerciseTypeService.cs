@@ -3,9 +3,17 @@ using ExerciseTracker.Data.Repositories;
 
 namespace ExerciseTracker.Services;
 
+/// <summary>
+/// Service to interface between the UI layer and the Data layer.
+/// </summary>
 public class ExerciseTypeService : IExerciseTypeService
 {
+    #region Fields
+
     private readonly IExerciseTypeRepository _exerciseTypeRepository;
+
+    #endregion
+    #region Constructors
 
     public ExerciseTypeService(IExerciseTypeRepository exerciseTypeRepository)
     {
@@ -17,6 +25,9 @@ public class ExerciseTypeService : IExerciseTypeService
         var created = await _exerciseTypeRepository.AddAsync(exerciseType);
         return created > 0;
     }
+
+    #endregion
+    #region Methods
 
     public async Task<bool> DeleteAsync(int id)
     {
@@ -45,4 +56,6 @@ public class ExerciseTypeService : IExerciseTypeService
         var updated = await _exerciseTypeRepository.UpdateAsync(exerciseType);
         return updated > 0;
     }
+
+    #endregion
 }

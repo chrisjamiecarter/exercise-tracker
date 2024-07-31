@@ -7,20 +7,31 @@ using Microsoft.Extensions.Options;
 
 namespace ExerciseTracker.Services;
 
+/// <summary>
+/// Service to seed data into the database when configured to.
+/// </summary>
 public class SeederService : ISeederService
 {
+    #region Fields
+
     private readonly IOptions<DatabaseOptions> _databaseOptions;
     private readonly IExerciseService _exerciseService;
     private readonly IExerciseTypeService _exerciseTypeService;
-    private readonly DatabaseContext _databaseContext;
+    private readonly EntityFrameworkDbContext _databaseContext;
 
-    public SeederService(IOptions<DatabaseOptions> databaseOptions, IExerciseService exerciseService, IExerciseTypeService exerciseTypeService, DatabaseContext databaseContext)
+    #endregion
+    #region Constructors
+
+    public SeederService(IOptions<DatabaseOptions> databaseOptions, IExerciseService exerciseService, IExerciseTypeService exerciseTypeService, EntityFrameworkDbContext databaseContext)
     {
         _databaseOptions = databaseOptions;
         _exerciseService = exerciseService;
         _exerciseTypeService = exerciseTypeService;
         _databaseContext = databaseContext;
     }
+
+    #endregion
+    #region Methods
 
     public async Task SeedDatabaseAsync()
     {
@@ -57,4 +68,6 @@ public class SeederService : ISeederService
             }
         }
     }
+
+    #endregion
 }
