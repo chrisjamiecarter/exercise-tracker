@@ -85,7 +85,7 @@ On initial startup and if configured to, the database will be seeded with mock d
 Select an option to perform.
 - **View Exercises**:
 Displays all stored exercise data.
-- **Log an Exerciset**:
+- **Log an Exercise**:
 Record the type, start time, end time, and any commentss for an exercise to add to the database.
 - **Update Exercise**:
 Select an exercise to update, and record the updated exercise details to update in the database.
