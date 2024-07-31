@@ -86,7 +86,7 @@ Select an option to perform.
 - **View Exercises**:
 Displays all stored exercise data.
 - **Log an Exercise**:
-Record the type, start time, end time, and any commentss for an exercise to add to the database.
+Record the type, start time, end time, and any comments for an exercise to add to the database.
 - **Update Exercise**:
 Select an exercise to update, and record the updated exercise details to update in the database.
 - **Delete Exercise**:
