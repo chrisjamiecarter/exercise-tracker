@@ -1,5 +1,5 @@
 ﻿using Bogus;
-using ExerciseTracker.ConsoleApp.Configurations;
+using ExerciseTracker.Configurations;
 using ExerciseTracker.Data.Contexts;
 using ExerciseTracker.Data.Entities;
 using Microsoft.EntityFrameworkCore;

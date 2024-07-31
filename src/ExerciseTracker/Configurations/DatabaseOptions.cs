@@ -1,4 +1,4 @@
-﻿namespace ExerciseTracker.ConsoleApp.Configurations;
+﻿namespace ExerciseTracker.Configurations;
 
 /// <summary>
 /// Class to hold the required application options for the database.
