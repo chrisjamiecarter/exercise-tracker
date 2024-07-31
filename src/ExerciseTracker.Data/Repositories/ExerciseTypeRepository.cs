@@ -1,4 +1,5 @@
-﻿using ExerciseTracker.Data.Entities;
+﻿using ExerciseTracker.Data.Contexts;
+using ExerciseTracker.Data.Entities;
 using Microsoft.EntityFrameworkCore;
 
 
@@ -8,7 +9,7 @@ public class ExerciseTypeRepository : Repository<ExerciseType>, IExerciseTypeRep
 {
     #region Constructors
 
-    public ExerciseTypeRepository(DbContext dbContext) : base(dbContext) { }
+    public ExerciseTypeRepository(DatabaseContext dbContext) : base(dbContext) { }
 
     #endregion
 

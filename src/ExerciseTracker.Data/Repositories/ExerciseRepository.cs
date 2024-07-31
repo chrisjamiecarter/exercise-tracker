@@ -1,4 +1,5 @@
-﻿using ExerciseTracker.Data.Entities;
+﻿using ExerciseTracker.Data.Contexts;
+using ExerciseTracker.Data.Entities;
 using Microsoft.EntityFrameworkCore;
 
 
@@ -8,12 +9,16 @@ public class ExerciseRepository : Repository<Exercise>, IExerciseRepository
 {
     #region Constructors
 
-    public ExerciseRepository(DbContext dbContext) : base(dbContext) { }
+    public ExerciseRepository(DatabaseContext dbContext) : base(dbContext) { }
 
     #endregion
 
     public async Task<IReadOnlyList<Exercise>> GetAsync()
     {
-        return await Get().ToListAsync();
+        return await Get()
+            .Include(x => x.ExerciseType)
+            .OrderBy(o => o.DateStart)
+            .ThenBy(o => o.DateEnd)
+            .ToListAsync();
     }
 }

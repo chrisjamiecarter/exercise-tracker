@@ -1,28 +1,17 @@
-﻿using System.Runtime.CompilerServices;
-using ExerciseTracker.ConsoleApp.Installers;
-using Microsoft.Extensions.Configuration;
+﻿using ExerciseTracker.ConsoleApp.Installers;
 using Microsoft.Extensions.Hosting;
 
 namespace ExerciseTracker.ConsoleApp;
 
 internal class Program
 {
-    private static void Main(string[] args)
+    private static async Task Main(string[] args)
     {
-        var builder = Host.CreateApplicationBuilder(args);
+        var builder = Host.CreateDefaultBuilder(args);
 
         // Add services to the container.
         builder.InstallServicesInAssembly();
 
-        using var app = builder.Build();
-
-        try
-        {
-            app.Run();            
-        }
-        catch (Exception exception)
-        {
-            Console.WriteLine(exception.Message);
-        }
+        await builder.RunConsoleAsync();                    
     }
 }

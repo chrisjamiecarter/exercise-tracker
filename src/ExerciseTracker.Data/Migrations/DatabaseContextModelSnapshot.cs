@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ExerciseTracker.Data.Migrations
 {
-    [DbContext(typeof(ExerciseTrackerDbContext))]
-    partial class ExerciseTrackerDbContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(DatabaseContext))]
+    partial class DatabaseContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
@@ -68,6 +68,18 @@ namespace ExerciseTracker.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("ExerciseType");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Cardio"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Weights"
+                        });
                 });
 
             modelBuilder.Entity("ExerciseTracker.Data.Entities.Exercise", b =>

@@ -1,4 +1,5 @@
-﻿using ExerciseTracker.Data.Contexts;
+﻿using System.Reflection;
+using ExerciseTracker.Data.Contexts;
 using ExerciseTracker.Data.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -9,15 +10,18 @@ namespace ExerciseTracker.ConsoleApp.Installers;
 
 public class DatabaseInstaller : IInstaller
 {
-    public void InstallServices(HostApplicationBuilder builder)
+    public void InstallServices(IHostBuilder builder)
     {
-        var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
-
-        builder.Services.AddDbContext<ExerciseTrackerDbContext>(options =>
-            options.UseSqlServer(connectionString));
-
-        builder.Services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
-        builder.Services.AddTransient<IExerciseRepository, ExerciseRepository>();
-        builder.Services.AddTransient<IExerciseTypeRepository, ExerciseTypeRepository>();
+        builder.ConfigureServices((hostContext, services) =>
+        {
+            var connectionString = hostContext.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+            
+            services.AddDbContext<DatabaseContext>(options =>
+                options.UseSqlServer(connectionString));
+            
+            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+            services.AddScoped<IExerciseRepository, ExerciseRepository>();
+            services.AddScoped<IExerciseTypeRepository, ExerciseTypeRepository>();           
+        });
     }
 }

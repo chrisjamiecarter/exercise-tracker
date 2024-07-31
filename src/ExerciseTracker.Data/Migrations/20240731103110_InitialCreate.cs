@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace ExerciseTracker.Data.Migrations
 {
     /// <inheritdoc />
@@ -45,6 +47,15 @@ namespace ExerciseTracker.Data.Migrations
                         principalTable: "ExerciseType",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.InsertData(
+                table: "ExerciseType",
+                columns: new[] { "Id", "Name" },
+                values: new object[,]
+                {
+                    { 1, "Cardio" },
+                    { 2, "Weights" }
                 });
 
             migrationBuilder.CreateIndex(
