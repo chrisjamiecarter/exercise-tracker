@@ -23,7 +23,7 @@ This is a .NET project designed to demonstrate the repository pattern solution f
     - [x] ExerciseController
     - [x] ExerciseService
     - [x] ExerciseRepository
-- [x] Dependency injection must be usedto access the repository from the controller.
+- [x] Dependency injection must be used to access the repository from the controller.
 
 ### Additional Requirements
 
