@@ -103,7 +103,7 @@ An SQL Server database is used to store the application data.
 - **Data Access**:
 Code-First Entity Framework is used for the database access methods.
 - **Data Seeding**:
-If configured, a set of mock shifts will be added to the databaseusing the [Bogus](https://github.com/bchavez/Bogus) library.
+If configured, a set of mock shifts will be added to the database using the [Bogus](https://github.com/bchavez/Bogus) library.
 - **Report Display**:
 Uses the Tables class provided by the [Spectre Console](https://spectreconsole.net/) library to display structured and formatted tables.
 
