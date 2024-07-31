@@ -5,8 +5,13 @@ using Microsoft.Extensions.Hosting;
 
 namespace ExerciseTracker.ConsoleApp.Installers;
 
+/// <summary>
+/// Register the services required by the console application to the DI container.
+/// </summary>
 public class AppInstaller : IInstaller
 {
+    #region Methods
+
     public void InstallServices(IHostBuilder builder)
     {
         builder.ConfigureServices(services =>
@@ -17,4 +22,6 @@ public class AppInstaller : IInstaller
             services.AddTransient<MainMenuPage>();
         });
     }
+
+    #endregion
 }

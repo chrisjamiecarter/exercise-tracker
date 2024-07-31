@@ -9,7 +9,6 @@ internal class ExerciseDto
 {
     #region Properties
 
-    // TODO: Revisit
     internal int Id { get; set; }
 
     internal DateTime DateStart { get; set; }
@@ -22,7 +21,7 @@ internal class ExerciseDto
 
     internal TimeSpan Duration { get; set; }
 
-    internal string DurationInMinutesString  => Duration.TotalMinutes.ToString("F2");
+    internal string DurationInMinutesString => Duration.TotalMinutes.ToString("F2");
 
     internal string Comments { get; set; } = string.Empty;
 

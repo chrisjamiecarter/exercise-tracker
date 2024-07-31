@@ -3,14 +3,25 @@ using ExerciseTracker.Data.Repositories;
 
 namespace ExerciseTracker.Services;
 
+/// <summary>
+/// Service to interface between the UI layer and the Data layer.
+/// </summary>
 public class ExerciseService : IExerciseService
 {
+    #region Fields
+
     private readonly IExerciseRepository _exerciseRepository;
+
+    #endregion
+    #region Constructors
 
     public ExerciseService(IExerciseRepository exerciseRepository)
     {
         _exerciseRepository = exerciseRepository;
     }
+
+    #endregion
+    #region Methods
 
     public async Task<bool> CreateAsync(Exercise exercise)
     {
@@ -45,4 +56,6 @@ public class ExerciseService : IExerciseService
         var updated = await _exerciseRepository.UpdateAsync(exercise);
         return updated > 0;
     }
+
+    #endregion
 }

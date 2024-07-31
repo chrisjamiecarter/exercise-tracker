@@ -1,10 +1,12 @@
 ﻿using ExerciseTracker.Data.Contexts;
 using Microsoft.EntityFrameworkCore;
 
-
 namespace ExerciseTracker.Data.Repositories;
 
-public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
+/// <summary>
+/// Generic repository for an EntityFrameworkCore DbContext.
+/// </summary>
+public class EntityFrameworkRepository<TEntity> : IRepository<TEntity> where TEntity : class
 {
     #region Fields
 
@@ -13,14 +15,15 @@ public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
 
     #endregion
     #region Constructors
-    
-    public Repository(DatabaseContext dbContext)
+
+    public EntityFrameworkRepository(EntityFrameworkDbContext dbContext)
     {
         _dbContext = dbContext;
         _dbSet = _dbContext.Set<TEntity>();
     }
 
     #endregion
+    #region Methods
 
     public async Task<int> AddAsync(TEntity entity)
     {
@@ -49,4 +52,6 @@ public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
         _dbContext.Entry(entity).State = EntityState.Modified;
         return await _dbContext.SaveChangesAsync();
     }
+
+    #endregion
 }

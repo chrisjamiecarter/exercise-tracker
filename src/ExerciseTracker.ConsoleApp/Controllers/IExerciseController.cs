@@ -1,7 +1,7 @@
 ﻿using ExerciseTracker.ConsoleApp.Models;
-using ExerciseTracker.Data.Entities;
 
 namespace ExerciseTracker.ConsoleApp.Controllers;
+
 internal interface IExerciseController
 {
     Task<bool> CreateAsync(CreateExerciseRequest request);

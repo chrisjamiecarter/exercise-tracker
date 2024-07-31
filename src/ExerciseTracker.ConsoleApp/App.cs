@@ -4,12 +4,20 @@ using Microsoft.Extensions.Hosting;
 
 namespace ExerciseTracker.ConsoleApp;
 
+/// <summary>
+/// A ConsoleApplication implemented as a HostedService.
+/// </summary>
 internal class App : IHostedService
 {
+    #region Fields
+
     private readonly IHostApplicationLifetime _appLifetime;
     private readonly ISeederService _seederService;
     private readonly MainMenuPage _mainMenuPage;
     private int? _exitCode;
+
+    #endregion
+    #region Constructors
 
     public App(IHostApplicationLifetime appLifetime, MainMenuPage mainMenuPage, ISeederService seederService)
     {
@@ -17,6 +25,9 @@ internal class App : IHostedService
         _seederService = seederService;
         _mainMenuPage = mainMenuPage;
     }
+
+    #endregion
+    #region Methods
 
     public Task StartAsync(CancellationToken cancellationToken)
     {
@@ -50,4 +61,6 @@ internal class App : IHostedService
         Environment.ExitCode = _exitCode.GetValueOrDefault(-1);
         return Task.CompletedTask;
     }
+
+    #endregion
 }

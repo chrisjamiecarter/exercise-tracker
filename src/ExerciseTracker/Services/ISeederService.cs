@@ -1,5 +1,4 @@
-﻿
-namespace ExerciseTracker.Services;
+﻿namespace ExerciseTracker.Services;
 
 public interface ISeederService
 {

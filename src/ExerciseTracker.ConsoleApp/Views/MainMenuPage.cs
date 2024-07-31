@@ -123,9 +123,9 @@ internal class MainMenuPage : BasePage
         {
             return;
         }
-                
+
         var exerciseTypes = _exerciseTypeController.ReturnAsync().Result;
-        
+
         var request = UpdateExercisePage.Show(exercise, exerciseTypes);
         if (request is null)
         {
@@ -146,7 +146,7 @@ internal class MainMenuPage : BasePage
     private void ViewExercises()
     {
         var exercises = _exerciseController.ReturnAsync().Result;
-        
+
         var table = TableEngine.GetExercisesTable(exercises);
 
         MessagePage.Show("View Exercises", table);

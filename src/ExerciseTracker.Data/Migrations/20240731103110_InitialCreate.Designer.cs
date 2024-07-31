@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ExerciseTracker.Data.Migrations
 {
-    [DbContext(typeof(DatabaseContext))]
+    [DbContext(typeof(EntityFrameworkDbContext))]
     [Migration("20240731103110_InitialCreate")]
     partial class InitialCreate
     {

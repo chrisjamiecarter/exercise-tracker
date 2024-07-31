@@ -23,7 +23,7 @@ internal class CreateExercisePage : BasePage
         string dateTimeFormat = Constants.DateTimeFormat;
 
         var exerciseType = UserInputService.GetExerciseType($"Select the [blue]type[/] of exercise: ", exerciseTypes);
-        if(exerciseType == null)
+        if (exerciseType == null)
         {
             return null;
         }
@@ -46,9 +46,9 @@ internal class CreateExercisePage : BasePage
         }
 
         var comments = UserInputService.GetBlankableString($"Enter any [blue]comments[/] (can be blank), or [blue]0[/] to cancel: ");
-        if(comments is "0")
+        if (comments is "0")
         {
-            return null; 
+            return null;
         }
 
         return new CreateExerciseRequest

@@ -2,16 +2,19 @@
 using ExerciseTracker.Data.Entities;
 using Microsoft.EntityFrameworkCore;
 
-
 namespace ExerciseTracker.Data.Repositories;
 
-public class ExerciseRepository : Repository<Exercise>, IExerciseRepository
+/// <summary>
+/// Concrete implementation for the Exercise repository.
+/// </summary>
+public class ExerciseRepository : EntityFrameworkRepository<Exercise>, IExerciseRepository
 {
     #region Constructors
 
-    public ExerciseRepository(DatabaseContext dbContext) : base(dbContext) { }
+    public ExerciseRepository(EntityFrameworkDbContext dbContext) : base(dbContext) { }
 
     #endregion
+    #region Methods
 
     public async Task<IReadOnlyList<Exercise>> GetAsync()
     {
@@ -21,4 +24,6 @@ public class ExerciseRepository : Repository<Exercise>, IExerciseRepository
             .ThenBy(o => o.DateEnd)
             .ToListAsync();
     }
+
+    #endregion
 }

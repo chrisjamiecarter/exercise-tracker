@@ -3,15 +3,18 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ExerciseTracker.Data.Contexts;
 
-public class DatabaseContext : DbContext
+/// <summary>
+/// Database context implmentation for EntityFrameworkCore.
+/// </summary>
+public class EntityFrameworkDbContext : DbContext
 {
     #region Constructors
 
-    public DatabaseContext()
+    public EntityFrameworkDbContext()
     {
     }
 
-    public DatabaseContext(DbContextOptions<DatabaseContext> options) : base(options)
+    public EntityFrameworkDbContext(DbContextOptions<EntityFrameworkDbContext> options) : base(options)
     {
     }
 

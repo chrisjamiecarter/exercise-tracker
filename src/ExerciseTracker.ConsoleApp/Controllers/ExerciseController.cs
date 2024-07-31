@@ -4,16 +4,27 @@ using ExerciseTracker.Services;
 
 namespace ExerciseTracker.ConsoleApp.Controllers;
 
+/// <summary>
+/// Controller for interfacing to the required application services.
+/// </summary>
 internal class ExerciseController : IExerciseController
 {
+    #region Fields
+
     private readonly IExerciseService _exerciseService;
     private readonly IExerciseTypeService _exerciseTypeService;
+
+    #endregion
+    #region Constructors
 
     public ExerciseController(IExerciseService exerciseService, IExerciseTypeService exerciseTypeService)
     {
         _exerciseService = exerciseService;
         _exerciseTypeService = exerciseTypeService;
     }
+
+    #endregion
+    #region Methods
 
     public async Task<bool> CreateAsync(CreateExerciseRequest request)
     {
@@ -59,7 +70,9 @@ internal class ExerciseController : IExerciseController
         exercise.Duration = request.DateEnd - request.DateStart;
         exercise.Comments = request.Comments;
         exercise.ExerciseType = request.ExerciseType;
-        
+
         return await _exerciseService.UpdateAsync(exercise);
     }
+
+    #endregion
 }

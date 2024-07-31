@@ -3,16 +3,28 @@ using ExerciseTracker.Data.Entities;
 using ExerciseTracker.Services;
 
 namespace ExerciseTracker.ConsoleApp.Controllers;
+
+/// <summary>
+/// Controller for interfacing to the required application services.
+/// </summary>
 internal class ExerciseTypeController : IExerciseTypeController
 {
+    #region Fields
+
     private readonly IExerciseService _exerciseService;
     private readonly IExerciseTypeService _exerciseTypeService;
+
+    #endregion
+    #region Constructors
 
     public ExerciseTypeController(IExerciseService exerciseService, IExerciseTypeService exerciseTypeService)
     {
         _exerciseService = exerciseService;
         _exerciseTypeService = exerciseTypeService;
     }
+
+    #endregion
+    #region Methods
 
     public async Task<bool> CreateAsync(CreateExerciseTypeRequest request)
     {
@@ -49,4 +61,6 @@ internal class ExerciseTypeController : IExerciseTypeController
 
         return await _exerciseTypeService.UpdateAsync(exerciseType);
     }
+
+    #endregion
 }
